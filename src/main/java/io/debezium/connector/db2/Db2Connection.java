@@ -53,7 +53,7 @@ public class Db2Connection extends JdbcConnection {
 
     private static final String LOCK_TABLE = "SELECT * FROM # WITH CS"; // DB2
 
-    private static final String LSN_TO_TIMESTAMP = "SELECT CURRENT TIMEstamp FROM sysibm.sysdummy1  WHERE ? > X'00000000000000000000000000000000'";
+    private static final String LSN_TO_TIMESTAMP = "SELECT CURRENT TIMEstamp FROM sysibm.sysdummy1 WHERE ? > X'00000000000000000000000000000000'";
 
     private final String GET_ALL_CHANGES_FOR_TABLE;
     private final String GET_LIST_OF_CDC_ENABLED_TABLES;
