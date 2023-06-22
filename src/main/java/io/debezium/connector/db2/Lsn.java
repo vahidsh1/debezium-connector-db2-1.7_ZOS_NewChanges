@@ -146,8 +146,17 @@ public class Lsn implements Comparable<Lsn>, Nullable {
         }
         final int[] thisU = getUnsignedBinary();
         final int[] thatU = o.getUnsignedBinary();
+		        int[] newthatU = new int[16];
+        for (int i = 8; i < thisU.length; i++) {
+            int neki = thisU[i];
+            newthatU[i] = neki;
+        }
+        for (int i = 0; i < 8; i++) {
+            int nekii = thatU[i];
+            newthatU[i] = nekii;
+        }
         for (int i = 0; i < thisU.length; i++) {
-            final int diff = thisU[i] - thatU[i];
+            final int diff = thisU[i] - newthatU[i];
             if (diff != 0) {
                 return diff;
             }
