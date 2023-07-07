@@ -9,7 +9,6 @@ package io.debezium.connector.db2;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -255,27 +254,27 @@ public class Db2Connection extends JdbcConnection {
      */
     public Instant timestampOfLsn(Lsn lsn) throws SQLException {
         final String query = LSN_TO_TIMESTAMP;
-return Instant.ofEpochMilli(0);
-//        if (lsn.getBinary() == null) {
-//            return null;
-//        }
-//
-//        Instant cachedInstant = lsnToInstantCache.get(lsn);
-//        if (cachedInstant != null) {
-//            return cachedInstant;
-//        }
-//
-//        return prepareQueryAndMap(query, statement -> {
-//            statement.setBytes(1, lsn.getBinary());
-//        }, singleResultMapper(rs -> {
-//            final Timestamp ts = rs.getTimestamp(1);
-//            final Instant ret = (ts == null) ? null : ts.toInstant();
-//            LOGGER.trace("Timestamp of lsn {} is {}", lsn, ret);
-//            if (ret != null) {
-//                lsnToInstantCache.put(lsn, ret);
-//            }
-//            return ret;
-//        }, "LSN to timestamp query must return exactly one value"));
+        return Instant.ofEpochMilli(0);
+        // if (lsn.getBinary() == null) {
+        // return null;
+        // }
+        //
+        // Instant cachedInstant = lsnToInstantCache.get(lsn);
+        // if (cachedInstant != null) {
+        // return cachedInstant;
+        // }
+        //
+        // return prepareQueryAndMap(query, statement -> {
+        // statement.setBytes(1, lsn.getBinary());
+        // }, singleResultMapper(rs -> {
+        // final Timestamp ts = rs.getTimestamp(1);
+        // final Instant ret = (ts == null) ? null : ts.toInstant();
+        // LOGGER.trace("Timestamp of lsn {} is {}", lsn, ret);
+        // if (ret != null) {
+        // lsnToInstantCache.put(lsn, ret);
+        // }
+        // return ret;
+        // }, "LSN to timestamp query must return exactly one value"));
     }
 
     /**

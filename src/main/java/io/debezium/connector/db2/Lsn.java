@@ -146,7 +146,7 @@ public class Lsn implements Comparable<Lsn>, Nullable {
         }
         final int[] thisU = getUnsignedBinary();
         final int[] thatU = o.getUnsignedBinary();
-		        int[] newthatU = new int[16];
+        int[] newthatU = new int[16];
         for (int i = 8; i < thisU.length; i++) {
             int neki = thisU[i];
             newthatU[i] = neki;
@@ -182,9 +182,9 @@ public class Lsn implements Comparable<Lsn>, Nullable {
     public Lsn increment() {
         final BigInteger bi = new BigInteger(this.toString().replace(":", ""), 16).add(BigInteger.ONE);
         final byte[] biByteArray = bi.toByteArray();
-        final byte[] lsnByteArray = new byte[16];
+        final byte[] lsnByteArray = new byte[10];
         for (int i = 0; i < biByteArray.length; i++) {
-            lsnByteArray[i + 16 - biByteArray.length] = biByteArray[i];
+            lsnByteArray[i + 10 - biByteArray.length] = biByteArray[i];
         }
         return Lsn.valueOf(lsnByteArray);
     }

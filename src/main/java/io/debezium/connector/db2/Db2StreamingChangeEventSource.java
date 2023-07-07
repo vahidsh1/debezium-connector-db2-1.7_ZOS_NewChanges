@@ -190,14 +190,14 @@ public class Db2StreamingChangeEventSource implements StreamingChangeEventSource
                                 continue;
                             }
                             // After restart for change that was the last committed and operations in it before the last committed offset
-//                            if (tableWithSmallestLsn.getChangePosition().compareTo(lastProcessedPositionOnStart) == 0
-//                                    && eventSerialNoInInitialTx <= lastProcessedEventSerialNoOnStart) {
-//                                LOGGER.info("Skipping change {} as its order in the transaction {} is smaller than or equal to the last recorded operation {}[{}]",
-//                                        tableWithSmallestLsn, eventSerialNoInInitialTx, lastProcessedPositionOnStart, lastProcessedEventSerialNoOnStart);
-//                                eventSerialNoInInitialTx++;
-//                                tableWithSmallestLsn.next();
-//                                continue;
-//                            }
+                            // if (tableWithSmallestLsn.getChangePosition().compareTo(lastProcessedPositionOnStart) == 0
+                            // && eventSerialNoInInitialTx <= lastProcessedEventSerialNoOnStart) {
+                            // LOGGER.info("Skipping change {} as its order in the transaction {} is smaller than or equal to the last recorded operation {}[{}]",
+                            // tableWithSmallestLsn, eventSerialNoInInitialTx, lastProcessedPositionOnStart, lastProcessedEventSerialNoOnStart);
+                            // eventSerialNoInInitialTx++;
+                            // tableWithSmallestLsn.next();
+                            // continue;
+                            // }
                             if (tableWithSmallestLsn.getChangeTable().getStopLsn().isAvailable() &&
                                     tableWithSmallestLsn.getChangeTable().getStopLsn().compareTo(tableWithSmallestLsn.getChangePosition().getCommitLsn()) <= 0) {
                                 LOGGER.warn(
